@@ -49,8 +49,8 @@ public class ZombieControl : MonoBehaviour
 
                 //if (Vector3.Distance(player.transform.position, transform.position) < meleeDistance)
                 //{
-                //    currentlyIs = ZombieState.Attack;
-                //}
+                //currentlyIs = ZombieState.Attack;
+                // }
                 break;
         }
 
