@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class CubeControl : MonoBehaviour
 {
+    public Transform footballCloneTemplate;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -24,5 +26,14 @@ public class CubeControl : MonoBehaviour
 
         if (Input.GetKey(KeyCode.D))
             transform.Rotate(Vector3.up, 180 * Time.deltaTime);
+        if (Input.GetKeyDown(KeyCode.Mouse0))
+        {
+            Transform newBall = Instantiate(footballCloneTemplate,
+                transform.position + 2*transform.forward,
+                Quaternion.identity);
+            BallControl myNewBallScript = 
+                newBall.GetComponent<BallControl>();
+            myNewBallScript.KickBall(transform);
+        }
     }
 }

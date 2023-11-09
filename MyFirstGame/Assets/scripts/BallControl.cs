@@ -5,9 +5,9 @@ using UnityEngine;
 public class BallControl : MonoBehaviour
 {
     Rigidbody rb;
-    float kickStrength = 10;
+    float kickStrength = 2;
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         rb = GetComponent<Rigidbody>();
     }
@@ -15,9 +15,31 @@ public class BallControl : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetMouseButtonDown(0))
+        
+    }
+    public void KickBall(Transform kicker)
+    {
+        rb.AddExplosionForce(kickStrength, kicker.position, 4);
+    }
+
+
+    private void OnCollisionEnter(Collision collision)
+    {
+
+        if (collision.gameObject.name == "Plane")
+        { print("Boing!!"); }
+        else
         {
-            rb.AddForce(kickStrength * Vector3.up, ForceMode.Impulse);
+            ZombieControl testIfZombie = gameObject.GetComponent<ZombieControl>();
+            if (testIfZombie != null) 
+            {
+                testIfZombie.dieNow();
+            }
+            print("Ouch");
+
+            KickBall(collision.transform);
         }
+
+
     }
 }
