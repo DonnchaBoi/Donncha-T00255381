@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,7 +7,9 @@ public class ZombieControl : MonoBehaviour
 {
     CubeControl player;
     Animator zombieAnimator;
-    enum ZombieState { Idle, Attack, Follow }
+    enum ZombieState { Idle, Attack, Follow,
+        Dying
+    }
     ZombieState currentlyIs = ZombieState.Idle;
     private float aggroRadius = 10;
     private float walkingSpeed = 0.3f;
@@ -47,13 +50,20 @@ public class ZombieControl : MonoBehaviour
                 transform.position += transform.forward * walkingSpeed * Time.deltaTime;
 
 
-                //if (Vector3.Distance(player.transform.position, transform.position) < meleeDistance)
-                //{
-                //currentlyIs = ZombieState.Attack;
-                // }
+                if (Vector3.Distance(player.transform.position, transform.position) < meleeDistance)
+                {
+                currentlyIs = ZombieState.Attack;
+                }
                 break;
         }
 
 
+    }
+
+    internal void dieNow()
+    {
+        zombieAnimator.SetBool("IsDying", true);
+        Destroy(gameObject,5);
+        currentlyIs = ZombieState.Dying;
     }
 }
