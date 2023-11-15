@@ -2,16 +2,18 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class ZombieControl : MonoBehaviour
 {
     CubeControl player;
+    NavMeshAgent agent;
     Animator zombieAnimator;
     enum ZombieState { Idle, Attack, Follow,
         Dying
     }
     ZombieState currentlyIs = ZombieState.Idle;
-    private float aggroRadius = 10;
+    private float aggroRadius = 100;
     private float walkingSpeed = 0.3f;
     private float meleeDistance = 1;
 
@@ -20,6 +22,8 @@ public class ZombieControl : MonoBehaviour
     {
         zombieAnimator = GetComponent<Animator>();
         player = FindObjectOfType<CubeControl>();
+
+        agent = this.GetComponent<NavMeshAgent>();
     }
 
     // Update is called once per frame
