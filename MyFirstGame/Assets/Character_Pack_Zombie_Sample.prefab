@@ -265,7 +265,6 @@ GameObject:
   m_Component:
   - component: {fileID: 5574533867879237972}
   - component: {fileID: 5574533867882453070}
-  - component: {fileID: 5574533869859314110}
   m_Layer: 0
   m_Name: zombie_zombie4
   m_TagString: Untagged
@@ -369,20 +368,6 @@ SkinnedMeshRenderer:
     m_Center: {x: -0.2262297, y: 0.003887251, z: 0}
     m_Extent: {x: 0.5237266, y: 0.20348991, z: 0.30575648}
   m_DirtyAABB: 0
---- !u!136 &5574533869859314110
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5574533867879273780}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.18
-  m_Height: 1.1
-  m_Direction: 1
-  m_Center: {x: -0.00000001089026, y: -0.00014520646, z: 0.5061583}
 --- !u!1 &5574533867879273782
 GameObject:
   m_ObjectHideFlags: 0
@@ -394,6 +379,8 @@ GameObject:
   - component: {fileID: 5574533867879237974}
   - component: {fileID: 5574533867886700174}
   - component: {fileID: 5574533869686613695}
+  - component: {fileID: 6796913916309615092}
+  - component: {fileID: -4582509449448555211}
   m_Layer: 0
   m_Name: Character_Pack_Zombie_Sample
   m_TagString: Untagged
@@ -451,6 +438,42 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 14debc08fc4d9cb4ca29622a3cae7319, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!136 &6796913916309615092
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5574533867879273782}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.22
+  m_Height: 1
+  m_Direction: 1
+  m_Center: {x: 0, y: 0.51, z: 0}
+--- !u!195 &-4582509449448555211
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5574533867879273782}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 0.5
+  m_Speed: 3.5
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 2
+  m_BaseOffset: 0
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
 --- !u!1 &5574533867879273784
 GameObject:
   m_ObjectHideFlags: 0

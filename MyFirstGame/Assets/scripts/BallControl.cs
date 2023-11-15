@@ -5,7 +5,7 @@ using UnityEngine;
 public class BallControl : MonoBehaviour
 {
     Rigidbody rb;
-    float kickStrength = 2;
+    float kickStrength = 10;
     // Start is called before the first frame update
     void Awake()
     {
@@ -25,16 +25,23 @@ public class BallControl : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
+        ZombieControl testIfZombie = collision.gameObject.GetComponent<ZombieControl>();
+        if (testIfZombie != null)
+        {
+            print("Zombie");
+            testIfZombie.dieNow();
+        }
+        else
+            print("not zombie");
+
+
+
 
         if (collision.gameObject.name == "Plane")
         { print("Boing!!"); }
         else
         {
-            ZombieControl testIfZombie = gameObject.GetComponent<ZombieControl>();
-            if (testIfZombie != null) 
-            {
-                testIfZombie.dieNow();
-            }
+
             print("Ouch");
 
             KickBall(collision.transform);
