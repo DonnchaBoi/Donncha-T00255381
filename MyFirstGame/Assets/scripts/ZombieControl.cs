@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.SceneManagement;
 
 public class ZombieControl : MonoBehaviour
 {
@@ -32,6 +33,7 @@ public class ZombieControl : MonoBehaviour
         switch (currentlyIs)
         {
             case ZombieState.Idle:
+                transform.position += transform.forward * walkingSpeed * Time.deltaTime;
 
                 if (Vector3.Distance(player.transform.position, transform.position) < aggroRadius)
                 {
@@ -56,14 +58,15 @@ public class ZombieControl : MonoBehaviour
 
                 if (Vector3.Distance(player.transform.position, transform.position) < meleeDistance)
                 {
-                currentlyIs = ZombieState.Attack;
+                    zombieAnimator.SetBool("IsAttacking", true);
+                    currentlyIs = ZombieState.Attack;
                 }
                 break;
+
         }
 
 
     }
-
     internal void dieNow()
     {
         zombieAnimator.SetBool("IsDying", true);

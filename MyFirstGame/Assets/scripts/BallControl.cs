@@ -5,7 +5,7 @@ using UnityEngine;
 public class BallControl : MonoBehaviour
 {
     Rigidbody rb;
-    float kickStrength = 10;
+    float kickStrength = 800;
     // Start is called before the first frame update
     void Awake()
     {
@@ -19,7 +19,7 @@ public class BallControl : MonoBehaviour
     }
     public void KickBall(Transform kicker)
     {
-        rb.AddExplosionForce(kickStrength, kicker.position, 4);
+        rb.AddExplosionForce(kickStrength, kicker.position, 10);
     }
 
 
@@ -46,7 +46,7 @@ public class BallControl : MonoBehaviour
 
             KickBall(collision.transform);
         }
-
+        Destroy(gameObject, 1);
 
     }
 }
